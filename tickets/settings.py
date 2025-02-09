@@ -13,7 +13,7 @@ DEFAULTS: Dict[str, Any] = {
         "rest_framework.permissions.IsAuthenticated",
     ),
     "DEFAULT_AUTHENTICATION_CLASSES": (
-        "rest_framework_simplejwt.authentication.JWTAuthentication"
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
     "UNPAID_ORDER_TICKET_EXPIRY": 600  # seconds
 }

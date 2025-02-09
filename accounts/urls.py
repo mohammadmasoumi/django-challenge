@@ -9,3 +9,5 @@ urlpatterns = [
     path("logout/", LogoutView.as_view(), name="auth_logout"),
     path("logout/all/", LogoutAllView.as_view(), name="auth_logout_all"),
 ]
+
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer

@@ -1,0 +1,26 @@
+{
+	"info": {
+		"_postman_id": "3fd89d7f-6d93-4ae0-bc70-d5bce5f52148",
+		"name": "VolleyballPlatform",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23152056"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "BuyTicket",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

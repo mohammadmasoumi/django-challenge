@@ -1,4 +1,4 @@
-from rest_framework import viewsets, filters
+from rest_framework import viewsets, authentication, permissions, filters
 from tickets.models import Ticket, TicketOrder
 from tickets.settings import app_settings
 from tickets.serializers import TicketSerializer, TicketOrderSerializer
@@ -9,7 +9,6 @@ class TicketViewSet(viewsets.ReadOnlyModelViewSet):
     API endpoint for listing and retrieving tickets.
     Typically used to show available tickets and ticket details.
     """
-
     queryset = Ticket.objects.prefetch_related(
         "match",
         "match__team_host",
@@ -22,8 +21,8 @@ class TicketViewSet(viewsets.ReadOnlyModelViewSet):
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     search_fields = ["ticket_id", "match__match_id", "seat__seat_number"]
     ordering_fields = ["price", "purchased_at"]
-    permission_classes = app_settings.DEFAULT_PERMISSION_CLASSES
-    authentication_classes = app_settings.DEFAULT_AUTHENTICATION_CLASSES
+    permission_classes = (permissions.AllowAny, )
+    authentication_classes = tuple()
 
 
 class TicketOrderViewSet(viewsets.ModelViewSet):
