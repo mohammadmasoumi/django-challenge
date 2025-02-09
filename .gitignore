@@ -1,0 +1,24 @@
+# Python
+*.pyc
+# Media files
+media/*
+# Local development settings
+volleyball_platform/settings_local.py
+# Virtual envs
+venv
+.venv
+# IDEA configurations
+.run*
+.idea/
+# Local development directories
+.env
+*/.env
+.scripts
+# Database
+*.sqlite3
+db.sqlite3
+# Logs
+logs
+*/*.log
+# Celeery
+celerybeat-schedule
