@@ -8,7 +8,6 @@ import uuid
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -17,122 +16,304 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Stadium',
+            name="Stadium",
             fields=[
-                ('stadium_id', models.CharField(default=tickets.models.utils.generate_random_id, max_length=12, primary_key=True, serialize=False)),
-                ('name', models.CharField(max_length=255)),
-                ('location', models.CharField(max_length=255)),
-                ('capacity', models.PositiveIntegerField()),
-                ('is_active', models.BooleanField(default=True)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
+                (
+                    "stadium_id",
+                    models.CharField(
+                        default=tickets.models.utils.generate_random_id,
+                        max_length=12,
+                        primary_key=True,
+                        serialize=False,
+                    ),
+                ),
+                ("name", models.CharField(max_length=255)),
+                ("location", models.CharField(max_length=255)),
+                ("capacity", models.PositiveIntegerField()),
+                ("is_active", models.BooleanField(default=True)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
             ],
             options={
-                'verbose_name': 'Stadium',
-                'verbose_name_plural': 'Stadiums',
+                "verbose_name": "Stadium",
+                "verbose_name_plural": "Stadiums",
             },
         ),
         migrations.CreateModel(
-            name='Team',
+            name="Team",
             fields=[
-                ('team_id', models.CharField(default=tickets.models.utils.generate_random_id, max_length=12, primary_key=True, serialize=False)),
-                ('name', models.CharField(max_length=256)),
-                ('code', models.CharField(max_length=10)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
+                (
+                    "team_id",
+                    models.CharField(
+                        default=tickets.models.utils.generate_random_id,
+                        max_length=12,
+                        primary_key=True,
+                        serialize=False,
+                    ),
+                ),
+                ("name", models.CharField(max_length=256)),
+                ("code", models.CharField(max_length=10)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
             ],
             options={
-                'verbose_name': 'Team',
-                'verbose_name_plural': 'Teams',
+                "verbose_name": "Team",
+                "verbose_name_plural": "Teams",
             },
         ),
         migrations.CreateModel(
-            name='TicketOrder',
+            name="TicketOrder",
             fields=[
-                ('order_id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
-                ('status', models.CharField(choices=[('pending', 'Pending'), ('confirmed', 'Confirmed'), ('cancelled', 'Cancelled')], default='pending', max_length=20)),
-                ('payment_status', models.CharField(choices=[('pending', 'Pending'), ('paid', 'Paid'), ('failed', 'Failed')], default='pending', max_length=20)),
-                ('total_amount', models.DecimalField(decimal_places=2, default=0.0, max_digits=10)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='ticket_orders', to=settings.AUTH_USER_MODEL)),
+                (
+                    "order_id",
+                    models.UUIDField(
+                        default=uuid.uuid4,
+                        editable=False,
+                        primary_key=True,
+                        serialize=False,
+                    ),
+                ),
+                (
+                    "status",
+                    models.CharField(
+                        choices=[
+                            ("pending", "Pending"),
+                            ("confirmed", "Confirmed"),
+                            ("cancelled", "Cancelled"),
+                        ],
+                        default="pending",
+                        max_length=20,
+                    ),
+                ),
+                (
+                    "payment_status",
+                    models.CharField(
+                        choices=[
+                            ("pending", "Pending"),
+                            ("paid", "Paid"),
+                            ("failed", "Failed"),
+                        ],
+                        default="pending",
+                        max_length=20,
+                    ),
+                ),
+                (
+                    "total_amount",
+                    models.DecimalField(decimal_places=2, default=0.0, max_digits=10),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="ticket_orders",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Ticket Order',
-                'verbose_name_plural': 'Ticket Orders',
+                "verbose_name": "Ticket Order",
+                "verbose_name_plural": "Ticket Orders",
             },
         ),
         migrations.CreateModel(
-            name='Seat',
+            name="Seat",
             fields=[
-                ('seat_id', models.CharField(default=tickets.models.utils.generate_random_id, max_length=12, primary_key=True, serialize=False)),
-                ('seat_number', models.CharField(max_length=10)),
-                ('section', models.CharField(blank=True, max_length=50, null=True)),
-                ('is_active', models.BooleanField(default=True)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('stadium', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='seats', to='tickets.stadium')),
+                (
+                    "seat_id",
+                    models.CharField(
+                        default=tickets.models.utils.generate_random_id,
+                        max_length=12,
+                        primary_key=True,
+                        serialize=False,
+                    ),
+                ),
+                ("seat_number", models.CharField(max_length=10)),
+                ("section", models.CharField(blank=True, max_length=50, null=True)),
+                ("is_active", models.BooleanField(default=True)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                (
+                    "stadium",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="seats",
+                        to="tickets.stadium",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Seat',
-                'verbose_name_plural': 'Seats',
-                'unique_together': {('stadium', 'seat_number')},
+                "verbose_name": "Seat",
+                "verbose_name_plural": "Seats",
+                "unique_together": {("stadium", "seat_number")},
             },
         ),
         migrations.CreateModel(
-            name='Payment',
+            name="Payment",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('amount', models.DecimalField(decimal_places=2, max_digits=10)),
-                ('payment_method', models.CharField(max_length=50)),
-                ('status', models.CharField(choices=[('pending', 'Pending'), ('completed', 'Completed'), ('failed', 'Failed')], default='pending', max_length=20)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('ticket_order', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='payment', to='tickets.ticketorder')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("amount", models.DecimalField(decimal_places=2, max_digits=10)),
+                ("payment_method", models.CharField(max_length=50)),
+                (
+                    "status",
+                    models.CharField(
+                        choices=[
+                            ("pending", "Pending"),
+                            ("completed", "Completed"),
+                            ("failed", "Failed"),
+                        ],
+                        default="pending",
+                        max_length=20,
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                (
+                    "ticket_order",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="payment",
+                        to="tickets.ticketorder",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Payment',
-                'verbose_name_plural': 'Payments',
+                "verbose_name": "Payment",
+                "verbose_name_plural": "Payments",
             },
         ),
         migrations.CreateModel(
-            name='Match',
+            name="Match",
             fields=[
-                ('match_id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
-                ('match_date', models.DateTimeField()),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('stadium', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='matches', to='tickets.stadium')),
-                ('team_guest', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='matches_as_guest', to='tickets.team')),
-                ('team_host', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='matches_as_host', to='tickets.team')),
+                (
+                    "match_id",
+                    models.UUIDField(
+                        default=uuid.uuid4,
+                        editable=False,
+                        primary_key=True,
+                        serialize=False,
+                    ),
+                ),
+                ("match_date", models.DateTimeField()),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                (
+                    "stadium",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="matches",
+                        to="tickets.stadium",
+                    ),
+                ),
+                (
+                    "team_guest",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="matches_as_guest",
+                        to="tickets.team",
+                    ),
+                ),
+                (
+                    "team_host",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="matches_as_host",
+                        to="tickets.team",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Match',
-                'verbose_name_plural': 'Matches',
+                "verbose_name": "Match",
+                "verbose_name_plural": "Matches",
             },
         ),
         migrations.CreateModel(
-            name='Ticket',
+            name="Ticket",
             fields=[
-                ('ticket_id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
-                ('ticket_type', models.CharField(choices=[('regular', 'Regular'), ('vip', 'VIP'), ('premium', 'Premium')], default='regular', max_length=50)),
-                ('price', models.DecimalField(decimal_places=2, max_digits=10)),
-                ('status', models.CharField(choices=[('available', 'Available'), ('sold', 'Sold'), ('cancelled', 'Cancelled')], default='available', max_length=20)),
-                ('purchased_at', models.DateTimeField(auto_now_add=True)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('match', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='tickets', to='tickets.match')),
-                ('order', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='tickets', to='tickets.ticketorder')),
-                ('seat', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='tickets', to='tickets.seat')),
+                (
+                    "ticket_id",
+                    models.UUIDField(
+                        default=uuid.uuid4,
+                        editable=False,
+                        primary_key=True,
+                        serialize=False,
+                    ),
+                ),
+                (
+                    "ticket_type",
+                    models.CharField(
+                        choices=[
+                            ("regular", "Regular"),
+                            ("vip", "VIP"),
+                            ("premium", "Premium"),
+                        ],
+                        default="regular",
+                        max_length=50,
+                    ),
+                ),
+                ("price", models.DecimalField(decimal_places=2, max_digits=10)),
+                (
+                    "status",
+                    models.CharField(
+                        choices=[
+                            ("available", "Available"),
+                            ("sold", "Sold"),
+                            ("cancelled", "Cancelled"),
+                        ],
+                        default="available",
+                        max_length=20,
+                    ),
+                ),
+                ("purchased_at", models.DateTimeField(auto_now_add=True)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                (
+                    "match",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="tickets",
+                        to="tickets.match",
+                    ),
+                ),
+                (
+                    "order",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="tickets",
+                        to="tickets.ticketorder",
+                    ),
+                ),
+                (
+                    "seat",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="tickets",
+                        to="tickets.seat",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Ticket',
-                'verbose_name_plural': 'Tickets',
-                'unique_together': {('match', 'seat')},
+                "verbose_name": "Ticket",
+                "verbose_name_plural": "Tickets",
+                "unique_together": {("match", "seat")},
             },
         ),
         migrations.AddConstraint(
-            model_name='match',
-            constraint=models.CheckConstraint(check=models.Q(('team_host', models.F('team_guest')), _negated=True), name='host_team_not_equal_guest_team'),
+            model_name="match",
+            constraint=models.CheckConstraint(
+                check=models.Q(("team_host", models.F("team_guest")), _negated=True),
+                name="host_team_not_equal_guest_team",
+            ),
         ),
     ]

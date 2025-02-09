@@ -30,7 +30,7 @@ class Match(models.Model):
         constraints = [
             models.CheckConstraint(
                 check=~Q(team_host=F("team_guest")),
-                name="host_team_not_equal_guest_team"
+                name="host_team_not_equal_guest_team",
             )
         ]
 

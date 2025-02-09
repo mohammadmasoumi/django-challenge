@@ -79,7 +79,11 @@ class Ticket(models.Model):
 
     ticket_id = models.UUIDField(primary_key=True, editable=False, default=uuid.uuid4)
     order = models.ForeignKey(
-        TicketOrder, on_delete=models.CASCADE, related_name="tickets", blank=True, null=True
+        TicketOrder,
+        on_delete=models.CASCADE,
+        related_name="tickets",
+        blank=True,
+        null=True,
     )
     match = models.ForeignKey("Match", on_delete=models.CASCADE, related_name="tickets")
     seat = models.ForeignKey("Seat", on_delete=models.CASCADE, related_name="tickets")
