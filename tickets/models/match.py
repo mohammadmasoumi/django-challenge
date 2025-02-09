@@ -1,5 +1,6 @@
 import uuid
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 
 class Match(models.Model):
@@ -21,6 +22,10 @@ class Match(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = _("Match")
+        verbose_name_plural = _("Matches")
 
     def __str__(self):
         return f"{self.team_host} vs {self.team_guest} at {self.stadium.name}"

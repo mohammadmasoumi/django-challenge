@@ -1,0 +1,154 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-02-09 14:32+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: admin/stadium.py:20
+msgid "Invalidate cache for selected stadiums"
+msgstr "کش برای استادیوم‌های انتخاب‌شده پاکسازی شود"
+
+#: admin/stadium.py:24
+msgid "Cache invalidated for selected stadiums."
+msgstr "کش برای استادیوم‌های انتخاب‌شده پاکسازی شد."
+
+#: management/commands/release_expired_orders.py:7
+msgid "Cancels pending TicketOrders that are older than 10 minutes."
+msgstr "سفارش‌های بلیط در انتظار که بیش از 10 دقیقه از ایجاد آنها گذشته است، لغو می‌کند."
+
+#: models/match.py:27
+msgid "Match"
+msgstr "مسابقه"
+
+#: models/match.py:28
+msgid "Matches"
+msgstr "مسابقات"
+
+#: models/payment.py:8 models/ticket.py:9
+msgid "Pending"
+msgstr "در انتظار"
+
+#: models/payment.py:12
+msgid "Completed"
+msgstr "تکمیل‌شده"
+
+#: models/payment.py:16
+msgid "Failed"
+msgstr "ناموفق"
+
+#: models/payment.py:39
+msgid "Payment"
+msgstr "پرداخت"
+
+#: models/payment.py:40
+msgid "Payments"
+msgstr "پرداخت‌ها"
+
+#: models/stadium.py:53
+msgid "Stadium"
+msgstr "استادیوم"
+
+#: models/stadium.py:54
+msgid "Stadiums"
+msgstr "استادیوم‌ها"
+
+#: models/stadium.py:77
+msgid "Seat"
+msgstr "صندلی"
+
+#: models/stadium.py:78
+msgid "Seats"
+msgstr "صندلی‌ها"
+
+#: models/team.py:48
+msgid "Team"
+msgstr "تیم"
+
+#: models/team.py:49
+msgid "Teams"
+msgstr "تیم‌ها"
+
+#: models/ticket.py:10
+msgid "Confirmed"
+msgstr "تایید‌شده"
+
+#: models/ticket.py:11 models/ticket.py:54
+msgid "Cancelled"
+msgstr "لغو‌شده"
+
+#: models/ticket.py:34
+msgid "Ticket Order"
+msgstr "سفارش بلیط"
+
+#: models/ticket.py:35
+msgid "Ticket Orders"
+msgstr "سفارش‌های بلیط"
+
+#: models/ticket.py:52
+msgid "Active"
+msgstr "فعال"
+
+#: models/ticket.py:53
+msgid "Used"
+msgstr "استفاده‌شده"
+
+#: models/ticket.py:58
+msgid "Regular"
+msgstr "عادی"
+
+#: models/ticket.py:59
+msgid "VIP"
+msgstr "وی‌آی‌پی"
+
+#: models/ticket.py:60
+msgid "Premium"
+msgstr "پریمیوم"
+
+#: models/ticket.py:88
+msgid "Ticket"
+msgstr "بلیط"
+
+#: models/ticket.py:89
+msgid "Tickets"
+msgstr "بلیط‌ها"
+
+#: serializers/payment.py:32
+msgid "Ticket order is not pending payment."
+msgstr "سفارش بلیط در انتظار پرداخت نمی‌باشد."
+
+#: serializers/payment.py:38
+msgid "Ticket order has expired. Please create a new order."
+msgstr "سفارش بلیط منقضی شده است. لطفاً یک سفارش جدید ایجاد کنید."
+
+#: serializers/payment.py:43
+msgid "Payment amount does not match the order total."
+msgstr "مبلغ پرداخت با مجموع سفارش مطابقت ندارد."
+
+#: serializers/ticket.py:60
+msgid "One or more selected seats are already booked for this match."
+msgstr "یکی یا چند صندلی انتخاب شده برای این مسابقه قبلاً رزرو شده‌اند."
+
+#: settings.py:48
+#, python-format, python-brace-format
+msgid ""
+"Could not import '%s' for {APP_SETTINGS} '{val}'. {e.__class__.__name__}: "
+"{e}."
+msgstr "امکان وارد کردن '%s' برای {APP_SETTINGS} '{val}' وجود ندارد. {e.__class__.__name__}: {e}."
+
+#: settings.py:68
+#, python-brace-format
+msgid "Invalid {APP_SETTINGS} setting: '{attr}'"
+msgstr "تنظیم {APP_SETTINGS} نامعتبر: '{attr}'"

@@ -30,6 +30,10 @@ class TicketOrder(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        verbose_name = _("Ticket Order")
+        verbose_name_plural = _("Ticket Orders")
+
     def is_expired(self):
         """
         Returns True if the order has been pending for more than 10 minutes.
@@ -81,6 +85,8 @@ class Ticket(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
+        verbose_name = _("Ticket")
+        verbose_name_plural = _("Tickets")
         unique_together = ("match", "seat")
 
     def __str__(self):

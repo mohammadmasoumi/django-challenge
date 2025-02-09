@@ -35,5 +35,9 @@ class Payment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        verbose_name = _("Payment")
+        verbose_name_plural = _("Payments")
+
     def __str__(self):
         return f"Payment for Order #{self.ticket_order} - {self.status}"

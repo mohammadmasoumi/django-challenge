@@ -61,8 +61,8 @@ class User(AbstractUser):
     REQUIRED_FIELDS = []  # No additional required fields
 
     class Meta:
-        verbose_name = "User"
-        verbose_name_plural = "Users"
+        verbose_name = _("User")
+        verbose_name_plural = _("Users")
 
     def __str__(self):
         return self.phone_number

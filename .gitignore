@@ -13,12 +13,11 @@ venv
 # Local development directories
 .env
 */.env
-.scripts
 # Database
 *.sqlite3
 db.sqlite3
 # Logs
-logs
-*/*.log
+logs/
+errors.log
 # Celeery
 celerybeat-schedule

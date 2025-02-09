@@ -1,0 +1,4 @@
+[09/Feb/2025 14:16:15] WARNING [django.request:241] Not Found: /
+[09/Feb/2025 14:16:15] WARNING [django.server:212] "GET / HTTP/1.1" 404 2176
+[09/Feb/2025 15:02:09] WARNING [django.request:241] Not Found: /
+[09/Feb/2025 15:02:09] WARNING [django.server:212] "GET / HTTP/1.1" 404 3072

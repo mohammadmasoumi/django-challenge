@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.cache import cache
+from django.utils.translation import gettext_lazy as _
 from tickets.models.utils import generate_random_id
 
 
@@ -48,6 +49,10 @@ class Stadium(models.Model):
 
     objects = StadiumManager()
 
+    class Meta:
+        verbose_name = _("Stadium")
+        verbose_name_plural = _("Stadiums")
+
     def __str__(self):
         return self.name
 
@@ -69,6 +74,8 @@ class Seat(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
+        verbose_name = _("Seat")
+        verbose_name_plural = _("Seats")
         unique_together = ("stadium", "seat_number")
 
     def __str__(self):
