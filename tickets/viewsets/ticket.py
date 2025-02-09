@@ -1,5 +1,6 @@
 from rest_framework import viewsets
 from tickets.models import TicketOrder
+from tickets.settings import app_settings
 from tickets.serializers import TicketOrderSerializer
 
 
@@ -10,6 +11,8 @@ class TicketOrderViewSet(viewsets.ModelViewSet):
 
     serializer_class = TicketOrderSerializer
     queryset = TicketOrder.objects.all()
+    permission_classes = app_settings.DEFAULT_PERMISSION_CLASSES
+    authentication_classes = app_settings.DEFAULT_AUTHENTICATION_CLASSES
 
     def get_queryset(self):
         return self.queryset.filter(user=self.request.user)
