@@ -11,6 +11,12 @@ class TicketOrderStatus(models.TextChoices):
     CANCELLED = "cancelled", _("Cancelled")
 
 
+class TicketOrderPaymentStatus(models.TextChoices):
+    PENDING = "pending", _("Pending")
+    PAID = "paid", _("Paid")
+    FAILED = "failed", _("Failed")
+
+
 class TicketOrder(models.Model):
     """
     Represents a purchase order for one or more tickets.
@@ -21,12 +27,17 @@ class TicketOrder(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="ticket_orders"
     )
-    total_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     status = models.CharField(
         max_length=20,
         choices=TicketOrderStatus.choices,
         default=TicketOrderStatus.PENDING,
     )
+    payment_status = models.CharField(
+        max_length=20,
+        choices=TicketOrderPaymentStatus.choices,
+        default=TicketOrderPaymentStatus.PENDING,
+    )
+    total_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -49,8 +60,8 @@ class TicketOrder(models.Model):
 
 
 class TicketStatus(models.TextChoices):
-    ACTIVE = "active", _("Active")
-    USED = "used", _("Used")
+    AVAILABLE = "available", "Available"
+    SOLD = "sold", "Sold"
     CANCELLED = "cancelled", _("Cancelled")
 
 
@@ -68,7 +79,7 @@ class Ticket(models.Model):
 
     ticket_id = models.UUIDField(primary_key=True, editable=False, default=uuid.uuid4)
     order = models.ForeignKey(
-        TicketOrder, on_delete=models.CASCADE, related_name="tickets"
+        TicketOrder, on_delete=models.CASCADE, related_name="tickets", blank=True, null=True
     )
     match = models.ForeignKey("Match", on_delete=models.CASCADE, related_name="tickets")
     seat = models.ForeignKey("Seat", on_delete=models.CASCADE, related_name="tickets")
@@ -79,9 +90,10 @@ class Ticket(models.Model):
     )
     price = models.DecimalField(max_digits=10, decimal_places=2)
     status = models.CharField(
-        max_length=20, choices=TicketStatus.choices, default=TicketStatus.ACTIVE
+        max_length=20, choices=TicketStatus.choices, default=TicketStatus.AVAILABLE
     )
     purchased_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
